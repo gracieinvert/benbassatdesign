@@ -1,0 +1,221 @@
+/* Trifecta-Inspired Portfolio Design */
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-text: #000000;
+    --color-bg: #ffffff;
+    --color-accent: #f5f5f5;
+    --color-border: #e0e0e0;
+    --spacing-xs: 20px;
+    --spacing-sm: 40px;
+    --spacing-md: 80px;
+    --spacing-lg: 120px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hero Section */
+header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+header h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.1;
+}
+
+header p {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 300;
+    color: #666;
+    letter-spacing: 0.01em;
+}
+
+/* Portfolio Grid */
+main {
+    padding: var(--spacing-lg) var(--spacing-sm);
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+}
+
+/* Project Cards */
+.project-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.project-card:hover {
+    transform: scale(1.02);
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    background-color: var(--color-accent);
+    transition: var(--transition);
+}
+
+.project-card:hover img {
+    filter: brightness(0.95);
+}
+
+.project-info {
+    padding: var(--spacing-xs) 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--spacing-xs);
+}
+
+.project-number {
+    font-family: "Courier New", monospace;
+    font-size: 0.875rem;
+    color: #999;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+}
+
+.project-info h2 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    flex-grow: 1;
+}
+
+.year {
+    font-size: 0.875rem;
+    color: #999;
+    flex-shrink: 0;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: var(--spacing-md) var(--spacing-sm);
+    border-top: 1px solid var(--color-border);
+}
+
+footer a {
+    display: inline-block;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    padding: 12px 24px;
+    border: 1px solid var(--color-border);
+    transition: var(--transition);
+}
+
+footer a:hover {
+    background-color: var(--color-text);
+    color: var(--color-bg);
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+
+    main {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    :root {
+        --spacing-sm: 24px;
+        --spacing-md: 60px;
+        --spacing-lg: 80px;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    header {
+        min-height: 80vh;
+    }
+
+    .project-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .project-number {
+        font-size: 0.75rem;
+    }
+
+    .project-info h2 {
+        font-size: 1rem;
+    }
+
+    .year {
+        font-size: 0.75rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    header {
+        min-height: auto;
+        padding: var(--spacing-sm) 0;
+    }
+
+    .portfolio-grid {
+        gap: var(--spacing-sm);
+    }
+
+    footer {
+        display: none;
+    }
+}
